@@ -8,16 +8,21 @@ function [] = plotParetoFront(data, opt)
 % extract obj
 objs = data(:, opt.indexesObj);
 
-paretoEfficiency = computeEfficientSolution(objs);
+if opt.onlyParetoDominant
 
-dataToPlot = data(paretoEfficiency, :);
-
+    paretoEfficiency = computeEfficientSolution(objs);
+    dataToPlot = data(paretoEfficiency, :);
+    
+else
+    dataToPlot = data;
+end
+    
 % 2D case
 if (length(opt.indexesObj) == 2)
     
     plot(dataToPlot(:, opt.indexesObj(1)), ...
         dataToPlot(:, opt.indexesObj(2)), ...
-        opt.plotOptions, 'markersize', 5);
+        opt.plotOptions, 'markersize', opt.markSize);
     
     xlabel(opt.legend.x);
     ylabel(opt.legend.y);
@@ -27,7 +32,7 @@ else
     plot3(dataToPlot(:, opt.indexesObj(1)), ...
         dataToPlot(:, opt.indexesObj(2)), ...
         dataToPlot(:, opt.indexesObj(3)), ...
-        opt.plotOptions);
+        opt.plotOptions, 'markersize', opt.markSize);
     
     xlabel(opt.legend.x);
     ylabel(opt.legend.y);
