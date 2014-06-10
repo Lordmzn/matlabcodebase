@@ -1,6 +1,6 @@
-function eff=computeEfficientSolution(M)
+function eff=ComputeEfficientSolution(M)
 %
-% eff=computeEfficientSolution(M)
+% eff=ComputeEfficientSolution(M)
 %
 % --------------------------------------------------------------------------
 % Find Pareto-efficient solutions of the multi-criteria optimization problem

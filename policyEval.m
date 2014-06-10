@@ -1,4 +1,4 @@
-function u = policyEval(pol, parameters, inputs)
+function u = PolicyEval(pol, parameters, inputs)
 % help: DIY
 %
 % EM, 26 feb 2014
