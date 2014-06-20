@@ -1,4 +1,4 @@
-function [stuff, column_headers] = SimulationLoader(prefix, idxs, postfix)
+function [stuff, column_headers] = Loader_Simulation(prefix, idxs, postfix)
 % Loads multiple simulation files using importdata matlab built-in.
 %
 % EM, 6 6 2014

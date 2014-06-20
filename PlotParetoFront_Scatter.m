@@ -25,8 +25,8 @@ if (length(columns) == 2)
     set(gca, 'FontSize', 18);
     
     if isfield(opt, 'labels')
-        xlabel(opt.labels.axes{1}, 'FontSize', 18);
-        ylabel(opt.labels.axes{2}, 'FontSize', 18);
+        xlabel(opt.labels.axis{1}, 'FontSize', 18);
+        ylabel(opt.labels.axis{2}, 'FontSize', 18);
     end
     
 else
@@ -61,9 +61,9 @@ else
     set(gca, 'FontSize', 18);
         
     if isfield(opt, 'labels')
-        xlabel(opt.labels.axes{1}, 'FontSize', 18);
-        ylabel(opt.labels.axes{2}, 'FontSize', 18);
-        zlabel(opt.labels.axes{3}, 'FontSize', 18);
+        xlabel(opt.labels.axis{1}, 'FontSize', 18);
+        ylabel(opt.labels.axis{2}, 'FontSize', 18);
+        zlabel(opt.labels.axis{3}, 'FontSize', 18);
     end
     
     subplot(2,2,2);
@@ -71,8 +71,8 @@ else
     set(gca, 'FontSize', 18);
         
     if isfield(opt, 'labels')
-        xlabel(opt.labels.axes{1}, 'FontSize', 18);
-        ylabel(opt.labels.axes{2}, 'FontSize', 18);
+        xlabel(opt.labels.axis{1}, 'FontSize', 18);
+        ylabel(opt.labels.axis{2}, 'FontSize', 18);
     end
     
     subplot(2,2,3);
@@ -80,8 +80,8 @@ else
     set(gca, 'FontSize', 18);
         
     if isfield(opt, 'labels')
-        xlabel(opt.labels.axes{1}, 'FontSize', 18);
-        ylabel(opt.labels.axes{3}, 'FontSize', 18);
+        xlabel(opt.labels.axis{1}, 'FontSize', 18);
+        ylabel(opt.labels.axis{3}, 'FontSize', 18);
     end
     
     subplot(2,2,4);
@@ -89,8 +89,8 @@ else
     set(gca, 'FontSize', 18);
     
     if isfield(opt, 'labels')
-        xlabel(opt.labels.axes{2}, 'FontSize', 18);
-        ylabel(opt.labels.axes{3}, 'FontSize', 18);
+        xlabel(opt.labels.axis{2}, 'FontSize', 18);
+        ylabel(opt.labels.axis{3}, 'FontSize', 18);
     end
     
 end

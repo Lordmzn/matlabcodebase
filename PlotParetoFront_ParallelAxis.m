@@ -1,5 +1,5 @@
-function [] = PlotParetoFront_ParallelAxes(referenceSet, columns, opt)
-% PlotParetoFront_Scatter(referenceSet, columns, opt)
+function [] = PlotParetoFront_ParallelAxis(referenceSet, columns, opt)
+% PlotParetoFront_Axis(referenceSet, columns, opt)
 %
 % Plot a pareto front
 %
@@ -42,13 +42,15 @@ end
 
 N = size( Z,1 );
 
-figure;
+if ~(isfield( opt, 'samefigure' ) && opt.samefigure)
+    figure;
+end
 
 % cbrewer stuff
 ctype = 'seq';
 cname = 'Reds';
 
-if isfield( opt, 'cbrewer' )
+if isfield( opt, 'cbrewer' ) && ~isfield( opt, 'color' )
     
     if isfield( opt.cbrewer, 'ctype' )
         ctype = opt.cbrewer.ctype;
@@ -57,10 +59,17 @@ if isfield( opt, 'cbrewer' )
     if isfield( opt.cbrewer, 'cname' )
         cname = opt.cbrewer.cname;
     end
-   
-end
+    
+    c = colormap( cbrewer( ctype, cname, N, 'pchip' ) );
 
-c = colormap( cbrewer( ctype, cname, N, 'pchip' ) );
+elseif isfield( opt, 'color' )
+    
+    c = repmat( opt.color, N, 1 );
+   
+else
+    c = colormap( winter(N) );
+end
+    
 colorbar;
 
 for i=1:N
@@ -71,5 +80,5 @@ end
 
 if isfield(opt, 'labels') 
     set(gca, 'XTick', 1:length(columns) );
-    set(gca, 'XTickLabel', opt.labels.axes, 'FontSize', 18 );
+    set(gca, 'XTickLabel', opt.labels.axis, 'FontSize', 18 );
 end
