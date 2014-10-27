@@ -7,5 +7,6 @@ for i=1:length(idxs)
     full_name = [prefix int2str(idxs(i)) postfix];
     data = importdata(full_name);
     stuff{i} = data.data;
+    stuff{i}.policy_number = idxs(i);
 end
 column_headers = data.colheaders;

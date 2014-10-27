@@ -42,10 +42,6 @@ end
 
 N = size( Z,1 );
 
-if ~(isfield( opt, 'samefigure' ) && opt.samefigure)
-    figure;
-end
-
 % cbrewer stuff
 ctype = 'seq';
 cname = 'Reds';
@@ -60,25 +56,26 @@ if isfield( opt, 'cbrewer' ) && ~isfield( opt, 'color' )
         cname = opt.cbrewer.cname;
     end
     
-    c = colormap( cbrewer( ctype, cname, N, 'pchip' ) );
+    c = cbrewer( ctype, cname, N, 'pchip' );
 
 elseif isfield( opt, 'color' )
     
     c = repmat( opt.color, N, 1 );
    
 else
-    c = colormap( winter(N) );
+    c = winter(N);
 end
     
-colorbar;
-
 for i=1:N
         
     hold all; parallelcoords( Y( i,: ), 'Color', c( i,: ) );
 
 end
 
+colormap(c);
+colorbar;
+
 if isfield(opt, 'labels') 
     set(gca, 'XTick', 1:length(columns) );
-    set(gca, 'XTickLabel', opt.labels.axis, 'FontSize', 18 );
+    set(gca, 'XTickLabel', opt.labels.axes );
 end

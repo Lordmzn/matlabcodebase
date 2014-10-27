@@ -10,6 +10,9 @@ formatSpec = '%f%f%f%f%f%f%f%f%f%f%f%f%f%f';
 for i=1:length(idxs)
     full_name = [prefix int2str(idxs(i)) postfix];
     fileID = fopen(full_name,'r');
+    if fileID == -1
+        error(['Cannot open metrics file ' full_name])
+    end
     dataArray = textscan(fileID, formatSpec, 'Delimiter', delimiter, ...
         'MultipleDelimsAsOne', true, 'HeaderLines' ,startRow-1, ...
         'ReturnOnError', false);
