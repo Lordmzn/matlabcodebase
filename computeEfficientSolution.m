@@ -1,6 +1,6 @@
-function eff=ComputeEfficientSolution(M)
+function eff=computeEfficientSolution(M)
 %
-% eff=ComputeEfficientSolution(M)
+% eff=computeEfficientSolution(M)
 %
 % --------------------------------------------------------------------------
 % Find Pareto-efficient solutions of the multi-criteria optimization problem
@@ -36,20 +36,20 @@ if any([nData, nObj] <= 1)
 end
 % exclude duplicate rows (i.e. solutions z_i providing the same objective
 % values) 
-[M2, i, j] = unique(M, 'rows');
+[M2, ~, j] = unique(M, 'rows');
 [nData2, nObj]  = size(M2);
 
 % for each obj tuple
 for i = 1 : nData2
     Y = repmat(M2(i,:), nData2, 1);
     % check when each obj of the tuple is greater than each of the others
-    D = [Y >= M2];
+    D = Y >= M2;
     % then sum that, so that I count how many obj each tuple (i) dominates
     d2(:, i) = sum(D, 2);
 end
 
-d2 = [d2 == nObj];
+d2 = d2 == nObj;
 g2 = sum(d2);
-eff2 = [g2 == 1]';
+eff2 = (g2 == 1)';
 
 eff = eff2(j);
